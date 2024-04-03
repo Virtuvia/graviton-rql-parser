@@ -65,6 +65,10 @@ class Lexer
      */
     public function tokenize($code)
     {
+        if (!is_string($code)) {
+            throw new \TypeError(sprintf('$code must be of type "string", got "%s"', \get_debug_type($code)));
+        }
+
         $end    = strlen($code);
         $cursor = 0;
         $tokens = [];
